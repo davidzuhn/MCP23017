@@ -18,7 +18,7 @@ void setup()
 
 	if (MCP23017.exists(i)) {
 	    Serial.println(" exists");
-	    MCP23017.debug(Serial, i);
+	    MCP23017.debugDump(Serial, i);
 	} else {
 	    Serial.println(" does not exist");
 	}
