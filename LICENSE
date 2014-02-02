@@ -1,0 +1,13 @@
+ * The MCP23017 implements 16 configurable I/O lines via an I2C
+ * interface.  This library is designed to make it possible to use
+ * this device without specific I2C/Wire commands.
+ *
+ * Copyright 2013, 2014 by david d zuhn <zoo@whitepineroute.org>
+ *
+ * This work is licensed under the Creative Commons Attribution-ShareAlike
+ * 4.0 International License. To view a copy of this license, visit
+ * http://creativecommons.org/licenses/by-sa/4.0/deed.en_US.
+ *
+ * You may use this work for any purposes, provided that you make your
+ * version available to anyone else.
+
