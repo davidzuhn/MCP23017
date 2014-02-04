@@ -22,7 +22,7 @@
  */
 #define checkAddress(address,error) do { if(address < 0x20 || address > 0x27) { return error; } } while(0)
 #define checkPort(port,error) do { if(port!=0 && port !=1) { return error; } } while(0)
-#define checkBit(bit,error)   do { if(port<0 || port>7) { return error; } } while(0)
+#define checkBit(bit,error)   do { if(bit<0 || bit>7) { return error; } } while(0)
 
 
 MCPIOIntf::MCPIOIntf()
