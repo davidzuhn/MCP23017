@@ -238,7 +238,7 @@ void MCPIOIntf::debugDump(Stream& s, uint8_t address)
     s.print("MCP23017 address 0x");
     s.print(address, HEX);
 
-    for (int i = 0; i <= 0x1A; i += 2) {
+    for (int i = 0; i < 0x16; i += 2) {
         int v = readRegister(address, 0, i);
         int v2 = readRegister(address, 1, i);
 
