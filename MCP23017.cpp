@@ -134,7 +134,6 @@ int MCPIOIntf::getGPIO(uint8_t address, uint8_t port)
 {
     checkAddress(address, -1);
     checkPort(port, -1);
-    checkBit(bit, -1);
 
     int val = readRegister(address, port, MCPIOIntf::GPIO);
     return val;
@@ -156,7 +155,6 @@ bool MCPIOIntf::setGPIO(uint8_t address, uint8_t port, uint8_t value)
 {
     checkAddress(address, false);
     checkPort(port, false);
-    checkBit(bit, false);
 
     writeRegister(address, port, MCPIOIntf::GPIO, value);
     return true;
