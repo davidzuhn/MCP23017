@@ -39,7 +39,7 @@
  * change them if your IOX device is at another address
  */
 
-#define KNOWN_DEVICE 0x20   
+#define KNOWN_DEVICE 0x20
 #define OUTPUT_PORT  0x0
 
 
@@ -53,22 +53,22 @@ void setup()
 
     // check for an MCp23017 at each of the possible addresses
     for (int i = 0x20; i < 0x28; i++) {
-	Serial.print("checking for device at address 0x");
-	Serial.print(i, HEX);
+        Serial.print("checking for device at address 0x");
+        Serial.print(i, HEX);
 
-	if (MCP23017.exists(i)) {
-	    // if one is found, then dump the registers to the debug console
-	    Serial.println(" exists");
-	    MCP23017.debugDump(Serial, i);
-	} else {
-	    Serial.println(" does not exist");
-	}
+        if (MCP23017.exists(i)) {
+            // if one is found, then dump the registers to the debug console
+            Serial.println(" exists");
+            MCP23017.debugDump(Serial, i);
+        } else {
+            Serial.println(" does not exist");
+        }
     }
 
 
     // initialize the output bits you have defined, one by one
     for (int bit = 0; bit < 8; bit++) {
-	MCP23017.setMode(KNOWN_DEVICE, OUTPUT_PORT, bit, OUTPUT);
+        MCP23017.setMode(KNOWN_DEVICE, OUTPUT_PORT, bit, OUTPUT);
     }
 
 }
@@ -77,16 +77,16 @@ void loop()
 {
     // turn on each bit in sequence
     for (int bit = 0; bit < 8; bit++) {
-	MCP23017.setGPIO(KNOWN_DEVICE, OUTPUT_PORT, bit, HIGH);
-	delay(50);
+        MCP23017.setGPIO(KNOWN_DEVICE, OUTPUT_PORT, bit, HIGH);
+        delay(50);
     }
 
     delay(1000);
 
     // and now turn them back off again
     for (int bit = 0; bit < 8; bit++) {
-	MCP23017.setGPIO(KNOWN_DEVICE, OUTPUT_PORT, bit, LOW);
-	delay(50);
+        MCP23017.setGPIO(KNOWN_DEVICE, OUTPUT_PORT, bit, LOW);
+        delay(50);
     }
 
 }
