@@ -27,12 +27,10 @@
 class MCPIOIntf {
   public:
     enum mcp_register { IODIR = 0x00, IPOL = 0x02, GPINTEN = 0x04,
-        DEFVAL = 0x06, INTCON = 0x08, IOCON = 0x0A,
-        GPPU = 0x0C, INTF = 0x0D, INTCAP = 0x10,
-        GPIO = 0x12, OLAT = 0x14
+			DEFVAL = 0x06, INTCON = 0x08, IOCON = 0x0A,
+			GPPU = 0x0C, INTF = 0x0D, INTCAP = 0x10,
+			GPIO = 0x12, OLAT = 0x14
     };
-
-     MCPIOIntf();
 
     /* returns true if a device is readable at this address */
     bool exists(uint8_t address);
@@ -66,6 +64,10 @@ class MCPIOIntf {
 
     /* print the current MCP23017 register state to the given Stream (such as Serial) */
     void debugDump(Stream & s, uint8_t address);
+
+private:
+    bool initialized = false;
+    void init();
 };
 
 

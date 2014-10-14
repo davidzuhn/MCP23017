@@ -14,8 +14,8 @@
  * version available to anyone else.  
  */
 
-#include <MCP23017.h>
-#include <Wire.h>
+#include "MCP23017.h"
+#include "Wire.h"
 
 /* common error checking routines, to make sure that we don't act when
  * unreasonable port or bit values are passed in
@@ -25,9 +25,12 @@
 #define checkBit(bit,error)   do { if(bit<0 || bit>7) { return error; } } while(0)
 
 
-MCPIOIntf::MCPIOIntf()
+void MCPIOIntf::init()
 {
-    Wire.begin();
+    if (!initialized) {
+	Wire.begin();
+	initialized = true;
+    }
 }
 
 
@@ -184,6 +187,8 @@ bool MCPIOIntf::setGPIO(uint8_t address, uint8_t port, uint8_t bit, bool value)
 
 int MCPIOIntf::readRegister(uint8_t address, uint8_t port, uint8_t reg)
 {
+    init();
+
     Wire.beginTransmission(address);
     Wire.write(reg + port);
     Wire.endTransmission();
@@ -207,6 +212,8 @@ int MCPIOIntf::readRegister(uint8_t address, uint8_t port, uint8_t reg)
 
 void MCPIOIntf::writeRegister(uint8_t address, uint8_t port, uint8_t reg, uint8_t value)
 {
+    init();
+
     Wire.beginTransmission(address);
     Wire.write(reg + port);
     Wire.write(value);
